@@ -5,10 +5,16 @@
  */
 package Models;
 
+import java.io.File;
+
 /**
  *
  * @author 01133123
  */
 public class WireWorld extends Automaton {
+    
+    public WireWorld(File inFile) {
+        super(inFile);
+    }
     
 }

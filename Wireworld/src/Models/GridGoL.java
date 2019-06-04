@@ -38,4 +38,9 @@ public class GridGoL extends Grid {
         }
     }
 
+    @Override
+    void randomize() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

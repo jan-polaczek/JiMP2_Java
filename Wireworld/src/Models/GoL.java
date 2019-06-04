@@ -5,10 +5,16 @@
  */
 package Models;
 
+import java.io.File;
+
 /**
  *
  * @author 01133123
  */
 public class GoL extends Automaton {
+    
+    public GoL(File inFile) {
+        super(inFile);
+    }
     
 }

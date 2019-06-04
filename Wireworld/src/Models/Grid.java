@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package Models;
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author 01133123
  */
 public abstract class Grid {
-    final Cell[][] cellsList;
+    Cell[][] cellsList;
     protected final int[] dimensions;
     protected char countedColor;
     public Grid(Cell[][] cellsList, int[] dimensions)
@@ -43,4 +44,5 @@ public abstract class Grid {
         return counter;
     }
     abstract void tick();
+    abstract void randomize();
 }

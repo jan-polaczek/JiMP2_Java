@@ -5,10 +5,17 @@
  */
 package Parsers;
 
+import Models.Grid;
+
 /**
  *
  * @author 01133123
  */
 public class OutputterGoL implements Outputter {
+
+    @Override
+    public void saveFile(Grid grid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
