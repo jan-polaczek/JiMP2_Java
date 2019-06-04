@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package Views;
-
+import Models.Observable;
 /**
  *
  * @author 01133123
  */
 public interface Observer {
-    
+    public abstract void update();
 }

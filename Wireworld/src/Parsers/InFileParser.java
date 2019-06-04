@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package Parsers;
-
+import Models.Grid;
+import java.io.File;
 /**
  *
  * @author 01133123
  */
 public interface InFileParser {
-    
+    public abstract Grid parse(File inFile);
 }
