@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Models;
-
+import Parsers.InFileParserWW;
 import java.io.File;
 
 /**
@@ -15,6 +15,8 @@ public class WireWorld extends Automaton {
     
     public WireWorld(File inFile) {
         super(inFile);
+        this.inparser = new InFileParserWW();
+        this.grid = this.inparser.parse(this.inFile);
     }
     
 }
