@@ -10,8 +10,8 @@ package Models;
  * @author 01133123
  */
 public abstract class Grid {
-    protected Cell[][] cellsList;
-    protected int[] dimensions;
+    final Cell[][] cellsList;
+    protected final int[] dimensions;
     protected char countedColor;
     public Grid(Cell[][] cellsList, int[] dimensions)
     {

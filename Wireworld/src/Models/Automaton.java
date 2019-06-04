@@ -7,12 +7,25 @@ package Models;
 import Views.Observer;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import Parsers.InFileParser;
 /**
  *
  * @author 01133123
  */
 public abstract class Automaton implements Observable {
-    protected List<Observer> observers = new ArrayList<>();
+    private List<Observer> observers = new ArrayList<>();
+    private Grid grid;
+    private boolean isPaused;
+    private File inFile;
+    private InFileParser inparser;
+    
+    public Automaton(File inFile)
+    {
+        this.inFile = inFile;
+        this.grid = this.inparser.parse(this.inFile);
+        this.isPaused = true;
+    }
     
     @Override
     public void registerObserver(Views.Observer observer)
@@ -26,5 +39,20 @@ public abstract class Automaton implements Observable {
         observers.forEach((observer) -> {
             observer.update();
         });
+    }
+    
+    public Grid getGrid()
+    {
+        return this.grid;
+    }
+    
+    public boolean isPaused()
+    {
+        return this.isPaused;
+    }
+    
+    public void pause()
+    {
+        this.isPaused = !this.isPaused;
     }
 }
