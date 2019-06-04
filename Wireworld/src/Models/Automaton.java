@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import Parsers.InFileParser;
+import Parsers.Outputter;
 /**
  *
  * @author 01133123
@@ -18,8 +19,13 @@ public abstract class Automaton implements Observable {
     private Grid grid;
     private boolean isPaused;
     private File inFile;
-    private InFileParser inparser;
+    InFileParser inparser;
+    Outputter outputter;
     
+    /**
+     *
+     * @param inFile plik wejściowy z planszą automatu
+     */
     public Automaton(File inFile)
     {
         this.inFile = inFile;
@@ -27,12 +33,19 @@ public abstract class Automaton implements Observable {
         this.isPaused = true;
     }
     
+    /**
+     *
+     * @param observer obserwator
+     */
     @Override
     public void registerObserver(Views.Observer observer)
     {
         observers.add(observer);
     }
     
+    /**
+     *
+     */
     @Override
     public void notifyObservers()
     {
@@ -41,18 +54,53 @@ public abstract class Automaton implements Observable {
         });
     }
     
+    /**
+     *
+     * @return dwuwymiarową listę komórek
+     */
     public Grid getGrid()
     {
         return this.grid;
     }
     
+    /**
+     *
+     * @return 0 jeśli automat działa,
+     * 1 jeśli jest zatrzymany
+     */
     public boolean isPaused()
     {
         return this.isPaused;
     }
     
+    /**
+     * zatrzymuje działanie automatu jeżeli automat działa,
+     * wznawia działanie, jeśli jest zatrzymany
+     */
     public void pause()
     {
         this.isPaused = !this.isPaused;
+    }
+
+    /**
+     * zapisuje obecny stan automatu do pliku tekstowego
+     */
+    public void saveFile()
+    {
+        outputter.saveFile(this.grid);
+    }
+
+    /**
+     * wykonuje jedno przejście pomiędzy generacjami
+     * i powiadamia obserwatorów
+     */
+    public void tick()
+    {
+        this.grid.tick();
+        this.notifyObservers();
+    }
+    public void randomize()
+    {
+        this.grid.randomize();
     }
 }
