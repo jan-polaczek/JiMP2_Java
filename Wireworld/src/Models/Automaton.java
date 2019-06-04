@@ -58,6 +58,8 @@ public abstract class Automaton implements Observable {
      *
      * @return dwuwymiarową listę komórek
      */
+    
+    @Override
     public Grid getGrid()
     {
         return this.grid;

@@ -12,4 +12,5 @@ import Views.Observer;
 public interface Observable {
     public abstract void registerObserver(Views.Observer observer);
     public abstract void notifyObservers();
+    public abstract Grid getGrid();
 }

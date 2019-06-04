@@ -29,13 +29,13 @@ public class FXMLDocumentController implements Initializable {
         System.exit(0);
     }
     
-    @FXML
+    /*@FXML
     private void FileChooser(ActionEvent event) {
      FileChooser fc = new FileChooser();
      fc.getExtensionFilters().add(new ExtensionFilter("Word Files", lstFile));
      
      
-    }
+    }*/
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
