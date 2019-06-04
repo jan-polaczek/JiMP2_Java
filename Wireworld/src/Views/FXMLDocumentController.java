@@ -8,10 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 
 public class FXMLDocumentController implements Initializable {
     
+    public String lstfile;
     @FXML
     private Label label;
     
@@ -24,6 +27,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleClose(MouseEvent event) {
         System.exit(0);
+    }
+    
+    @FXML
+    private void FileChooser(ActionEvent event) {
+     FileChooser fc = new FileChooser();
+     fc.getExtensionFilters().add(new ExtensionFilter("Word Files", lstFile));
+     
+     
     }
     
     @Override
