@@ -18,8 +18,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
-        Group rootGroup = new Group();
-        rootGroup.getChildren().add( root );
+        Group mainGroup = new Group();
+        mainGroup.getChildren().add( root );
         float x = 100, y = 100;
         Rectangle rectangle = new Rectangle(x, y, 50, 50);
         
@@ -31,9 +31,9 @@ public class Main extends Application {
             }
         }, 0, REFRESH_TIME);
         
-        rootGroup.getChildren().add(rectangle);
+        mainGroup.getChildren().add(rectangle);
         
-        Scene scene = new Scene(rootGroup);
+        Scene scene = new Scene(mainGroup);
         stage.setScene(scene);
         stage.show();
     }
