@@ -30,6 +30,10 @@ public class Cell {
     {
         return this.color;
     }
+    public void setColor(char c)
+    {
+        this.color = c;
+    }
     public void changeState(){
         switch (this.color) {
             case 'w':

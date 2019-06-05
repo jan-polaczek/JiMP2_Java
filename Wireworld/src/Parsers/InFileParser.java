@@ -6,10 +6,11 @@
 package Parsers;
 import Models.Grid;
 import java.io.File;
+import java.io.FileNotFoundException;
 /**
  *
  * @author 01133123
  */
 public interface InFileParser {
-    public abstract Grid parse(File inFile);
+    public abstract Grid parse (File inFile) throws FileNotFoundException ;
 }

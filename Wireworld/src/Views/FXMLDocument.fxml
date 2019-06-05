@@ -17,7 +17,7 @@
             <Button fx:id="pausebtn" layoutX="93.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#StartStop" prefHeight="60.0" prefWidth="175.0" text="START" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="40.0" />
             <Button layoutX="93.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#FileChooser" prefHeight="60.0" prefWidth="175.0" text="LOAD FILE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0" />
             <Button layoutX="93.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#FileSaver" prefHeight="60.0" prefWidth="175.0" text="SAVE TO FILE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="200.0" />
-            <Button layoutX="93.0" layoutY="262.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="175.0" text="RANDOMIZE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="280.0" />
+            <Button layoutX="93.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#RandomizeCells" prefHeight="60.0" prefWidth="175.0" text="RANDOMIZE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="280.0" />
             <Button layoutX="93.0" layoutY="338.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="175.0" text="SET SIZE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="360.0" />
             <Button fx:id="gamemodebtn" layoutX="93.0" layoutY="418.0" mnemonicParsing="false" onMouseClicked="#GameChanger" prefHeight="60.0" prefWidth="175.0" text="GAME OF LIFE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="440.0" />
          </children>

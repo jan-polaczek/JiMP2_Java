@@ -22,15 +22,17 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
 
 public class FXMLDocumentController implements Initializable {
+    
     @FXML
     public String lstfile;
     public boolean gamemode = false;
     public boolean pause = true;
-    private final float CANVAS_WIDTH = 850;
-    private final float CANVAS_HEIGHT = 650;
+    private final float CANVAS_WIDTH = 800;
+    private final float CANVAS_HEIGHT = 600;
     private float cellSizeX;
     private float cellSizeY;
     Models.Automaton automaton;
+    Observer genView;
     
     @FXML
     private Button gamemodebtn;
@@ -42,7 +44,7 @@ public class FXMLDocumentController implements Initializable {
     private Label labSingleFile;
     
     @FXML
-    private FlowPane board;
+    private FlowPane board = new FlowPane();
     
     private void setAutomaton(Automaton automaton)
     {
@@ -60,9 +62,14 @@ public class FXMLDocumentController implements Initializable {
      
      if(f != null)
      {
-         this.labSingleFile.setText(f.getAbsolutePath()); //tu powinno wysyłać plik do controllera, na razie tylko pobiera ścieżkę do pliku
-         if(this.gamemode == false) this.automaton = new Models.WireWorld(f);
-         else this.automaton = new Models.GoL(f);
+         //this.labSingleFile.setText(f.getAbsolutePath()); //tu powinno wysyłać plik do controllera, na razie tylko pobiera ścieżkę do pliku
+         /*if(this.gamemode == false) this.automaton = new Models.WireWorld(f);
+         else this.automaton = new Models.GoL(f);*/
+         this.automaton = new Models.WireWorld();
+         this.automaton.setFile(f);
+         this.automaton.parse();
+         this.createBoard();
+         this.automaton.play();
      }
      
     }
@@ -103,7 +110,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void RandomizeCells(MouseEvent event) {  //działanie przycisku RANDOMIZE
         // tutaj GUI wysyła wiadomość do kontrolera
+        this.automaton = new Models.WireWorld();
         this.automaton.randomize();
+        this.createBoard();
+        this.genView = new GenerationView(automaton, this);
+        this.genView.register();
+        this.automaton.play();
     }
     
     public boolean isPaused()
@@ -116,14 +128,17 @@ public class FXMLDocumentController implements Initializable {
         // TODO
     }
     
-    private void initializeBoard()
+    public void createBoard()
     {
         board.getChildren().clear();
+        board.setMaxWidth(800);
+        board.setPrefWidth(800);
+        board.setMinWidth(800);
         Grid grid = automaton.getGrid();
         int width = grid.getDimensions()[0];
         int height = grid.getDimensions()[1];
-        this.cellSizeX = CANVAS_WIDTH/width;
-        this.cellSizeY = CANVAS_HEIGHT/height;
+        this.cellSizeX = this.CANVAS_WIDTH/width;
+        this.cellSizeY = this.CANVAS_HEIGHT/height;
         for (int i=0; i<width; i++)
         {
             for(int k=0; k<height; k++)
@@ -144,7 +159,7 @@ public class FXMLDocumentController implements Initializable {
                         r.setFill(Paint.valueOf("0000FF"));
                     break;
                     case 'y':
-                        r.setFill(Paint.valueOf("00FFFF"));
+                        r.setFill(Paint.valueOf("FFFF00"));
                     break;
                     case 'r':
                         r.setFill(Paint.valueOf("FF0000"));
@@ -153,5 +168,11 @@ public class FXMLDocumentController implements Initializable {
                 board.getChildren().add(r);
             }
         }
+        
+    }
+    @FXML
+    FlowPane getBoard()
+    {
+        return this.board;
     }
 }

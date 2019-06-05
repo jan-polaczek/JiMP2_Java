@@ -10,6 +10,12 @@ import java.util.List;
 import java.io.File;
 import Parsers.InFileParser;
 import Parsers.Outputter;
+import java.io.FileNotFoundException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 /**
  *
  * @author 01133123
@@ -21,17 +27,21 @@ public abstract class Automaton implements Observable {
     File inFile;
     InFileParser inparser;
     Outputter outputter;
-    
+    private final int REFRESH_TIME = 400;
     /**
      *
      * @param inFile plik wejściowy z planszą automatu
      */
-    public Automaton(File inFile)
+    public Automaton()
+    {
+        this.isPaused = true;
+        
+    }
+    public void setFile(File inFile)
     {
         this.inFile = inFile;
-        this.isPaused = true;
     }
-    
+    public abstract void parse();
     /**
      *
      * @param observer obserwator
@@ -103,5 +113,18 @@ public abstract class Automaton implements Observable {
     public void randomize()
     {
         this.grid.randomize();
+    }
+    public void play()
+    {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+         Platform.runLater(new Runnable() {
+            public void run() {
+                tick();
+            }
+            });
+            }
+        }, 0, REFRESH_TIME);
     }
 }

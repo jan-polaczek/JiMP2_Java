@@ -29,24 +29,14 @@ public class Main extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         Group mainGroup = new Group();
         mainGroup.getChildren().add( root );
-        this.gui = new GUI();
-        gui.drawGrid();
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                
-            }
-        }, 0, REFRESH_TIME);
         
         
-        while(0==0)
-        {
-            if(!controller.isPaused()) mainGroup.getChildren().add(gui.mainGroup);
-            Scene scene = new Scene(mainGroup);
-            stage.setScene(scene);
-            stage.show();
-        }
+        
+        mainGroup.getChildren().add(controller.getBoard());
+        Scene scene = new Scene(mainGroup);
+        stage.setScene(scene);
+        stage.show();
+        
     }
 
     public static void main(String[] args) {
