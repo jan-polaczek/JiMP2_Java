@@ -1,5 +1,6 @@
 
 package Views;
+import Models.Automaton;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,7 +13,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
 
-
 public class FXMLDocumentController implements Initializable {
     @FXML
     public String lstfile;
@@ -21,6 +21,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public boolean pause;
     
+    Models.Automaton automaton;
     
     @FXML
     private Label labSingleFile;
@@ -38,8 +39,9 @@ public class FXMLDocumentController implements Initializable {
      
      if(f != null)
      {
-         labSingleFile.setText(f.getAbsolutePath()); //tu powinno wysyłać plik do controllera, na razie tylko pobiera ścieżkę do pliku
-         // Automaton automaton = new Models.WireWorld(f);
+         this.labSingleFile.setText(f.getAbsolutePath()); //tu powinno wysyłać plik do controllera, na razie tylko pobiera ścieżkę do pliku
+         if(this.gamemode == false) this.automaton = new Models.WireWorld(f);
+         else this.automaton = new Models.GoL(f);
      }
      
     }
@@ -48,34 +50,35 @@ public class FXMLDocumentController implements Initializable {
     private void FileSaver(MouseEvent event) {  //działanie przycisku SAVE TO FILE
         FileChooser fc = new FileChooser();
         File f = fc.showOpenDialog(null);
-        lstfile=f.getAbsolutePath();   //w stringu lstfile znajduje sie ścieżka do wybranego przez użytkownika pliku, program powinien zapisywać tam aktualne położenia komórek, ale nie zapisuje :(
+        this.lstfile=f.getAbsolutePath();   //w stringu lstfile znajduje sie ścieżka do wybranego przez użytkownika pliku, program powinien zapisywać tam aktualne położenia komórek, ale nie zapisuje :(
     }
     
     @FXML
     private void GameChanger(MouseEvent event) { //działanie przycisku zmieniającego grę
-       if(gamemode==false) {
-           gamemode=true;               //tu powinna jeszcze zmieniać się nazwa przycisku
+       if(this.gamemode==false) {
+           this.gamemode=true;               //tu powinna jeszcze zmieniać się nazwa przycisku
        }
        else
        {
-           gamemode=false;
+           this.gamemode=false;
        }
     }
     
     @FXML
     private void StartStop(MouseEvent event) {  //działanie przycisku START
-        if(pause==false) {
-           pause=true;  
+        if(this.pause==false) {
+           this.pause=true;  
        }
        else
        {
-           pause=false;
+           this.pause=false;
        }
     }
     
     @FXML
     private void RandomizeCells(MouseEvent event) {  //działanie przycisku RANDOMIZE
         // tutaj GUI wysyła wiadomość do kontrolera
+        automaton.randomize();
     }
     
     
@@ -83,6 +86,5 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
 }

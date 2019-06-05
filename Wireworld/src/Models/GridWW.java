@@ -13,8 +13,7 @@ public class GridWW extends Grid {
     
     private static final int ELECTRON_MIN = 1;
     private static final int ELECTRON_MAX = 2;
-    private static final int RAND_SIZE_MIN = 5;
-    private static final int RAND_SIZE_RANGE = 25;
+    private static final int COL_NUM = 4;
     
     public GridWW(Cell[][] cellsList, int[] dimensions) {
         super(cellsList, dimensions);
@@ -49,7 +48,7 @@ public class GridWW extends Grid {
         {
             for(int k = 0; k < this.dimensions[1]; k++)
             {
-                int colNum = rand.nextInt(4);
+                int colNum = rand.nextInt(COL_NUM);
                 char color = 'b';
                 switch (colNum) {
                     case 0:
@@ -60,9 +59,6 @@ public class GridWW extends Grid {
                         break;
                     case 2:
                         color = 'r';
-                        break;
-                    case 3:
-                        color = 'b';
                         break;
                 }
                 Cell cell = new Cell(color);

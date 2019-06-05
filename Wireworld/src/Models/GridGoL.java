@@ -5,6 +5,8 @@
  */
 package Models;
 
+import java.util.Random;
+
 /**
  *
  * @author 01133123
@@ -13,7 +15,7 @@ public class GridGoL extends Grid {
     
     private static final int ALIVE_MIN = 2;
     private static final int ALIVE_MAX = 3;
-    
+    private static final int COL_NUM = 2;
     public GridGoL(Cell[][] cellsList, int[] dimensions) {
         super(cellsList, dimensions);
         this.countedColor = 'w';
@@ -40,7 +42,21 @@ public class GridGoL extends Grid {
 
     @Override
     void randomize() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Random rand = new Random();
+        this.dimensions[0] = RAND_SIZE_MIN + rand.nextInt(RAND_SIZE_RANGE);
+        this.dimensions[1] = RAND_SIZE_MIN + rand.nextInt(RAND_SIZE_RANGE);
+         for(int i = 0; i < this.dimensions[0]; i++)
+        {
+            for(int k = 0; k < this.dimensions[1]; k++)
+            {
+                int colNum = rand.nextInt(COL_NUM);
+                char color = 'b';
+                if(colNum == 1) color = 'w';
+                Cell cell = new Cell(color);
+                this.cellsList = new Cell[i][k];
+                cellsList[i][k] = cell;
+            }
+        }
     }
 
 }

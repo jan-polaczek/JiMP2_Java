@@ -11,6 +11,8 @@ import java.util.List;
  * @author 01133123
  */
 public abstract class Grid {
+    static final int RAND_SIZE_MIN = 5;
+    static final int RAND_SIZE_RANGE = 25;
     Cell[][] cellsList;
     protected final int[] dimensions;
     protected char countedColor;
