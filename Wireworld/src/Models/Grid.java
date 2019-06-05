@@ -45,6 +45,14 @@ public abstract class Grid {
             counter ++;
         return counter;
     }
+    public int[] getDimensions()
+    {
+        return this.dimensions;
+    }
+    public Cell getCell(int x, int y)
+    {
+        return this.cellsList[x][y];
+    }
     abstract void tick();
     abstract void randomize();
 }

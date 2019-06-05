@@ -24,7 +24,7 @@ public class GenerationView implements Observer {
     @Override
     public void update() {
         this.grid = this.observable.getGrid();
-        this.gui.drawGrid(grid);
+        this.gui.drawGrid();
     }
     
 }
