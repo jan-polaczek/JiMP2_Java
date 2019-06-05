@@ -13,16 +13,18 @@ import Models.Observable;
 public class GenerationView implements Observer {
     Observable observable;
     Grid grid;
+    GUI gui;
     @SuppressWarnings("LeakingThisInConstructor")
-    public GenerationView(Observable observable)
+    public GenerationView(Observable observable, GUI gui)
     {
         this.observable = observable;
         this.observable.registerObserver(this);
+        this.gui = gui;
     }
     @Override
     public void update() {
         this.grid = this.observable.getGrid();
-        
+        this.gui.drawGrid(grid);
     }
     
 }

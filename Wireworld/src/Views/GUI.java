@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package Views;
-
+import Models.Grid;
 /**
  *
  * @author 01133123
  */
 public class GUI {
     
+    public void drawGrid(Grid grid){
+        
+    }
 }

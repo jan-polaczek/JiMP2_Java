@@ -16,9 +16,9 @@ import Parsers.Outputter;
  */
 public abstract class Automaton implements Observable {
     private List<Observer> observers = new ArrayList<>();
-    private Grid grid;
+    Grid grid;
     private boolean isPaused;
-    private File inFile;
+    File inFile;
     InFileParser inparser;
     Outputter outputter;
     
@@ -29,7 +29,6 @@ public abstract class Automaton implements Observable {
     public Automaton(File inFile)
     {
         this.inFile = inFile;
-        this.grid = this.inparser.parse(this.inFile);
         this.isPaused = true;
     }
     
