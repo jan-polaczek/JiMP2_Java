@@ -17,8 +17,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public String lstfile;
     @FXML
-    private Label label;
-    @FXML
     public boolean gamemode;
     @FXML
     public boolean pause;
@@ -27,11 +25,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label labSingleFile;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
     
     @FXML
     private void handleClose(MouseEvent event) {  //działanie przycisku EXIT
@@ -78,6 +71,11 @@ public class FXMLDocumentController implements Initializable {
        {
            pause=false;
        }
+    }
+    
+    @FXML
+    private void RandomizeCells(MouseEvent event) {  //działanie przycisku RANDOMIZE
+        // tutaj GUI wysyła wiadomość do kontrolera
     }
     
     
