@@ -34,8 +34,12 @@ public abstract class Automaton implements Observable {
      */
     public Automaton()
     {
-        this.isPaused = true;
+        this.isPaused = false;
         
+    }
+    public void setPause(boolean pause)
+    {
+        this.isPaused = pause;
     }
     public void setFile(File inFile)
     {
@@ -121,6 +125,7 @@ public abstract class Automaton implements Observable {
             public void run() {
          Platform.runLater(new Runnable() {
             public void run() {
+                if(!isPaused)
                 tick();
             }
             });

@@ -26,7 +26,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public String lstfile;
     public boolean gamemode = false;
-    public boolean pause = true;
+    public boolean pause = false;
     private final float CANVAS_WIDTH = 800;
     private final float CANVAS_HEIGHT = 600;
     private float cellSizeX;
@@ -96,6 +96,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void StartStop(MouseEvent event) {  //działanie przycisku START
+        this.automaton.pause();
         if(this.pause==false) {
            this.pause=true;
            pausebtn.setText("START");
@@ -115,6 +116,7 @@ public class FXMLDocumentController implements Initializable {
         this.createBoard();
         this.genView = new GenerationView(automaton, this);
         this.genView.register();
+        this.automaton.setPause(this.pause);
         this.automaton.play();
     }
     
@@ -130,6 +132,13 @@ public class FXMLDocumentController implements Initializable {
     
     public void createBoard()
     {
+        if(this.pause==false) {
+           pausebtn.setText("PAUSE");
+       }
+       else
+       {
+           pausebtn.setText("START");
+       }
         board.getChildren().clear();
         board.setMaxWidth(800);
         board.setPrefWidth(800);
