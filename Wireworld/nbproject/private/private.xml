@@ -5,11 +5,13 @@
         <group>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Models/Cell.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Models/GoL.java</file>
+            <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Parsers/Outputter.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Controllers/GoLController.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Views/FXMLDocumentController.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Views/GenerationView.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Views/GUI.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Parsers/InFileParserWW.java</file>
+            <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Models/GridWW.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Parsers/InFileParserGoL.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Controllers/MainController.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Views/Observer.java</file>
@@ -18,7 +20,8 @@
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Models/WireWorld.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Parsers/InFileParser.java</file>
             <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Controllers/AutomatonController.java</file>
-            <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Views/Wireworld.java</file>
+            <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Parsers/OutputterWW.java</file>
+            <file>file:/C:/Users/Krzysiek/Documents/GitHub/JiMP2_Java/Wireworld/src/Models/Grid.java</file>
         </group>
     </open-files>
 </project-private>
