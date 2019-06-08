@@ -14,7 +14,6 @@ public class GenerationView implements Observer {
     Observable observable;
     Grid grid;
     FXMLDocumentController controller;
-    @SuppressWarnings("LeakingThisInConstructor")
     public GenerationView(Observable observable, FXMLDocumentController controller)
     {
         this.observable = observable;

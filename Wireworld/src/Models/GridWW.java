@@ -41,7 +41,6 @@ public class GridWW extends Grid {
     
     @Override
     void randomize() {
-        System.out.println("Hello again");
         Random rand = new Random();
         //this.dimensions[0] = RAND_SIZE_MIN + rand.nextInt(RAND_SIZE_RANGE);
         //this.dimensions[1] = RAND_SIZE_MIN + rand.nextInt(RAND_SIZE_RANGE);

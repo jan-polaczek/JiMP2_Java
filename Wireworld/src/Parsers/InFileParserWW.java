@@ -53,13 +53,13 @@ public class InFileParserWW implements InFileParser {
             {
                 
             }
-            else if(type == "ElectronHead")
+            else if("ElectronHead".equals(type))
             {
                 int x = Integer.valueOf(line[1]);
                 int y = Integer.valueOf(line[2]);
                 grid.getCell(x, y).setColor('l');
             }
-            else if(type == "ElectronTail")
+            else if("ElectronTail".equals(type))
             {
                 int x = Integer.valueOf(line[1]);
                 int y = Integer.valueOf(line[2]);
@@ -67,6 +67,7 @@ public class InFileParserWW implements InFileParser {
             }
             
         }
+
         return grid;
         
     }

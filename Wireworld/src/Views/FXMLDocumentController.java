@@ -20,6 +20,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.File;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
+import javafx.geometry.Insets;
 
 public class FXMLDocumentController implements Initializable {
     
@@ -27,8 +28,10 @@ public class FXMLDocumentController implements Initializable {
     public String lstfile;
     public boolean gamemode = false;
     public boolean pause = false;
-    private final float CANVAS_WIDTH = 800;
-    private final float CANVAS_HEIGHT = 600;
+    private final int CANVAS_WIDTH = 800;
+    private final int CANVAS_HEIGHT = 700;
+    private final int MARGIN_LEFT = 40;
+    private final int MARGIN_TOP = 10;
     private float cellSizeX;
     private float cellSizeY;
     Models.Automaton automaton;
@@ -44,7 +47,7 @@ public class FXMLDocumentController implements Initializable {
     private Label labSingleFile;
     
     @FXML
-    private FlowPane board = new FlowPane();
+    private FlowPane board = new FlowPane(0, 0);
     
     private void setAutomaton(Automaton automaton)
     {
@@ -140,14 +143,18 @@ public class FXMLDocumentController implements Initializable {
            pausebtn.setText("START");
        }
         board.getChildren().clear();
-        board.setMaxWidth(800);
-        board.setPrefWidth(800);
-        board.setMinWidth(800);
+        board.setPadding(new Insets(MARGIN_TOP, 0, 0, MARGIN_LEFT));
+        board.setMaxWidth(CANVAS_WIDTH+MARGIN_LEFT);
+        board.setPrefWidth(CANVAS_WIDTH+MARGIN_LEFT);
+        board.setMinWidth(CANVAS_WIDTH+MARGIN_LEFT);
+        board.setPrefHeight(CANVAS_HEIGHT);
+        board.setMinHeight(CANVAS_HEIGHT);
+        board.setMaxHeight(CANVAS_HEIGHT);
         Grid grid = automaton.getGrid();
         int width = grid.getDimensions()[0];
         int height = grid.getDimensions()[1];
-        this.cellSizeX = this.CANVAS_WIDTH/width;
-        this.cellSizeY = this.CANVAS_HEIGHT/height;
+        this.cellSizeX = (CANVAS_WIDTH-MARGIN_LEFT)/width;
+        this.cellSizeY = (CANVAS_HEIGHT-MARGIN_TOP)/height;
         for (int i=0; i<width; i++)
         {
             for(int k=0; k<height; k++)
