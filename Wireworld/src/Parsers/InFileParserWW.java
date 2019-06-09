@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class InFileParserWW implements InFileParser {
 
     @Override
-    public Grid parse(File inFile) throws FileNotFoundException {
+    public Grid parse(File inFile) throws FileNotFoundException, ArrayIndexOutOfBoundsException {
         Scanner sc = new Scanner(inFile);
         int width = sc.nextInt();
         int height = sc.nextInt();
@@ -189,6 +189,28 @@ public class InFileParserWW implements InFileParser {
                 int x = Integer.valueOf(line[1]);
                 int y = Integer.valueOf(line[2]);
                 grid.getCellReversed(x, y).setColor('r');
+            } else if ("Electron".equals(type)) {
+                int x = Integer.valueOf(line[1]);
+                int y = Integer.valueOf(line[2]);
+                String z = String.valueOf(line[3]);
+                grid.getCellReversed(x, y).setColor('r');
+                switch(z)
+                {
+                    case "Right":
+                        grid.getCellReversed(x+1, y).setColor('l');
+                    break;
+                    case "Down":
+                        grid.getCellReversed(x, y+1).setColor('l');
+                    break;
+                    case "Left":
+                        grid.getCellReversed(x-1, y).setColor('l');
+                    break;
+                    case "Up":
+                        grid.getCellReversed(x, y+1).setColor('l');
+                    break;
+                    
+                }
+                
             }
 
         }

@@ -1,6 +1,7 @@
-package Views;
+package Controllers;
 
 import Models.Observable;
+import Views.Observer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -22,7 +23,7 @@ public class Main extends Application {
         //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Main.class.getResource("FXMLDocument.fxml"));
+        loader.setLocation(Main.class.getResource("/Views/FXMLDocument.fxml"));
         Parent root = loader.load();
         controller = (FXMLDocumentController) loader.getController();
         stage.initStyle(StageStyle.UNDECORATED);

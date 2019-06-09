@@ -1,7 +1,11 @@
-package Views;
+package Controllers;
 
 import Models.Cell;
 import Models.Grid;
+import Views.GenerationView;
+import Views.GenerationView;
+import Views.Observer;
+import Views.Observer;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -175,7 +179,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    FlowPane getBoard() {
+    public FlowPane getBoard() {
         return this.board;
     }
 }
