@@ -110,17 +110,23 @@ public abstract class Automaton implements Observable {
     }
 
     public void play() {
+        int period = REFRESH_TIME;
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(() -> {
                     if (!isPaused) {
                         tick();
                     }
+                    if(period != REFRESH_TIME)
+                    {
+                        timer.cancel();
+                        play();
+                    }
                 });
             }
-        }, 0, REFRESH_TIME);
+        }, 0, period);
     }
     
    public void setSpeed(int speed) {

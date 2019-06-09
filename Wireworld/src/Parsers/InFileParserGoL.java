@@ -28,9 +28,9 @@ public class InFileParserGoL implements InFileParser {
         dims[0] = width;
         dims[1] = height;
         Cell[][] cellsList = new Cell[width][height];
-        for (int i = 0; i < width; i++) {
-            for (int k = 0; k < height; k++) {
-                cellsList[i][k] = new Cell('b');
+        for (int i = 0; i < height; i++) {
+            for (int k = 0; k < width; k++) {
+                cellsList[k][i] = new Cell('b');
             }
         }
         Grid grid = new GridGoL();
@@ -39,7 +39,7 @@ public class InFileParserGoL implements InFileParser {
         while (sc.hasNextLine()) {
             int cellType = sc.nextInt();
             if (cellType == 1) {
-                grid.getCell(counter / height, counter % width).setColor('w');
+                grid.getCellReversed(counter / width, counter % width).setColor('w');
             }
             counter++;
 

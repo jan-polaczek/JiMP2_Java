@@ -180,10 +180,10 @@ public class FXMLDocumentController implements Initializable {
         int height = grid.getDimensions()[1];
         this.cellSizeX = (CANVAS_WIDTH - MARGIN_LEFT) / width;
         this.cellSizeY = (CANVAS_HEIGHT - MARGIN_TOP) / height;
-        for (int i = 0; i < width; i++) {
-            for (int k = 0; k < height; k++) {
+        for (int i = 0; i < height; i++) {
+            for (int k = 0; k < width; k++) {
                 Rectangle r = new Rectangle();
-                Cell cell = automaton.getGrid().getCell(i, k);
+                Cell cell = automaton.getGrid().getCellReversed(i, k);
                 r.setWidth(this.cellSizeX);
                 r.setHeight(this.cellSizeY);
                 switch (cell.getColor()) {
