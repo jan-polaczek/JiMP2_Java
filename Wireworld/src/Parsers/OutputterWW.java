@@ -14,8 +14,21 @@ import Models.Grid;
 public class OutputterWW implements Outputter {
 
     @Override
-    public void saveFile(Grid grid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String saveFile(Grid grid) {
+        String result = "";
+        int width = grid.getDimensions()[0];
+        int height = grid.getDimensions()[1];
+        result += width + " ";
+        result += height + "\n";
+        for(int i = 0; i < height; i++)
+        {
+            for(int k = 0; k < width; k++)
+            {
+                if(grid.getCellReversed(i, k).getColor() == 'y') result += "Conductor " + k + " " + i + " " + k + " " + i + "\n";
+                else if(grid.getCellReversed(i, k).getColor() == 'r') result += "ElectronTail " + k + " " + i + " " + k + " " + i + "\n";
+                else if(grid.getCellReversed(i, k).getColor() == 'l') result += "ElectronHead " + k + " " + i + " " + k + " " + i + "\n";
+            }
+        }
+        return result;
     }
-
 }

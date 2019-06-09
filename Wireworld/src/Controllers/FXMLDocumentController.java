@@ -5,10 +5,13 @@ import Models.Grid;
 import Views.GenerationView;
 import Views.Observer;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -27,7 +30,7 @@ import javafx.stage.FileChooser;
 
 public class FXMLDocumentController implements Initializable {
 
-    public String lstfile;
+    public String saveFilePath;
     public boolean gamemode = false;
     public boolean pause = true;
     private final int CANVAS_WIDTH = 800;
@@ -107,10 +110,27 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void FileSaver(MouseEvent event) {  //działanie przycisku SAVE TO FILE
         FileChooser fc = new FileChooser();
-        File f = fc.showOpenDialog(null);
-        this.lstfile = f.getAbsolutePath();   //w stringu lstfile znajduje sie ścieżka do wybranego przez użytkownika pliku, program powinien zapisywać tam aktualne położenia komórek, ale nie zapisuje :(
+        String saveText = this.automaton.saveFile();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+            fc.getExtensionFilters().add(extFilter);
+ 
+            //Show save file dialog
+            File file = fc.showSaveDialog(null);
+ 
+            if (file != null) {
+                saveTextToFile(saveText, file);
+            }
     }
-
+    private void saveTextToFile(String content, File file) {
+        try {
+            PrintWriter writer;
+            writer = new PrintWriter(file);
+            writer.println(content);
+            writer.close();
+        } catch (IOException ex) {
+            
+        }
+    }
     @FXML
     private void GameChanger(MouseEvent event) { //działanie przycisku zmieniającego grę
         if (gamemode == false) {
@@ -220,7 +240,6 @@ public class FXMLDocumentController implements Initializable {
         alert.setHeaderText("An exception has occured: ");
         alert.setContentText("Input file contains incorrect data" + ex);
 
-// Create expandable Exception.
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         ex.printStackTrace(pw);

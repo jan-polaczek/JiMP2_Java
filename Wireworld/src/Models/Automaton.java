@@ -93,8 +93,8 @@ public abstract class Automaton implements Observable {
     /**
      * zapisuje obecny stan automatu do pliku tekstowego
      */
-    public void saveFile() {
-        outputter.saveFile(this.grid);
+    public String saveFile() {
+        return this.outputter.saveFile(this.grid);
     }
 
     /**

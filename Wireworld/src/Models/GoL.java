@@ -6,7 +6,7 @@
 package Models;
 
 import Parsers.InFileParserGoL;
-
+import Parsers.OutputterGoL;
 /**
  *
  * @author 01133123
@@ -17,6 +17,7 @@ public class GoL extends Automaton {
         super();
         this.grid = new GridGoL();
         this.inparser = new InFileParserGoL();
+        this.outputter = new OutputterGoL();
     }
 
 }

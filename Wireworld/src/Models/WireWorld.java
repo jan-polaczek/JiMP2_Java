@@ -6,7 +6,7 @@
 package Models;
 
 import Parsers.InFileParserWW;
-
+import Parsers.OutputterWW;
 /**
  *
  * @author 01133123
@@ -17,6 +17,7 @@ public class WireWorld extends Automaton {
         super();
         this.grid = new GridWW();
         this.inparser = new InFileParserWW();
+        this.outputter = new OutputterWW();
     }
 
 }

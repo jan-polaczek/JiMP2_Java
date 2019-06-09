@@ -14,5 +14,5 @@ import java.io.File;
  */
 public interface Outputter {
 
-    public abstract void saveFile(Grid grid);
+    public abstract String saveFile(Grid grid);
 }
