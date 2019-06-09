@@ -10,8 +10,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -20,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -195,6 +195,12 @@ public class FXMLDocumentController implements Initializable {
         board.setPrefHeight(CANVAS_HEIGHT);
         board.setMinHeight(CANVAS_HEIGHT);
         board.setMaxHeight(CANVAS_HEIGHT);
+        board.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                changeCell(mouseEvent);
+            }
+        });
         Grid grid = automaton.getGrid();
         int width = grid.getDimensions()[0];
         int height = grid.getDimensions()[1];
@@ -265,5 +271,26 @@ public class FXMLDocumentController implements Initializable {
         alert.getDialogPane().setExpandableContent(expContent);
 
         alert.showAndWait();
+    }
+    
+    @FXML
+    void changeCell(MouseEvent event)
+    {
+        int x = ((int)event.getX() - MARGIN_LEFT)/(int)this.cellSizeX;
+        int y = ((int)event.getY() - MARGIN_TOP)/(int)this.cellSizeY;
+        if(this.gamemode)
+        {
+            this.automaton.getGrid().getCell(x, y).changeState();
+        }
+        else
+        {
+            if(event.getButton() == MouseButton.PRIMARY && !event.isShiftDown())
+                this.automaton.getGrid().getCell(x, y).setColor('l');
+            else if(event.getButton() == MouseButton.SECONDARY)
+                this.automaton.getGrid().getCell(x, y).setColor('y');
+            else if(event.getButton() == MouseButton.PRIMARY)
+                this.automaton.getGrid().getCell(x, y).setColor('b');
+        }
+        this.createBoard();
     }
 }
