@@ -85,7 +85,7 @@ public abstract class Grid {
         return this.cellsList[x][y];
     }
     
-    public Cell getCellReversed(int x, int y) {
+    public Cell getCellReversed(int x, int y) throws ArrayIndexOutOfBoundsException{
         return this.cellsList[y][x];
     }
 

@@ -3,19 +3,24 @@ package Controllers;
 import Models.Cell;
 import Models.Grid;
 import Views.GenerationView;
-import Views.GenerationView;
-import Views.Observer;
 import Views.Observer;
 import java.io.File;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
@@ -32,12 +37,16 @@ public class FXMLDocumentController implements Initializable {
     private final int CELL_GAP = 1;
     private float cellSizeX;
     private float cellSizeY;
+    private int speed = 1;
     Models.Automaton automaton;
     Observer genView;
 
     @FXML
     private Button gamemodebtn;
 
+    @FXML
+    private Button speedbtn;
+    
     @FXML
     private Button pausebtn;
 
@@ -63,7 +72,11 @@ public class FXMLDocumentController implements Initializable {
             } else {
                 this.automaton = new Models.GoL();
             }
-            this.automaton.setFile(f);
+            try {
+                this.automaton.setFile(f);
+            } catch (Exception ex) {
+                this.showException(ex);
+            }
             this.createBoard();
             this.genView = new GenerationView(this.automaton, this);
             this.genView.register();
@@ -72,7 +85,25 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+    @FXML
+    private void speedChange(MouseEvent event) {
+        switch(this.speed)
+        {
+            case 0:
+                this.speed = 1;
+                speedbtn.setText("SPEED: NORMAL");
+                break;
+            case 1:
+                this.speed = 2;
+                speedbtn.setText("SPEED: FAST");
+                break;
+            case 2:
+                this.speed = 0;
+                speedbtn.setText("SPEED: SLOW");
+                break;
+        }
+        this.automaton.setSpeed(this.speed);
+    }
     @FXML
     private void FileSaver(MouseEvent event) {  //działanie przycisku SAVE TO FILE
         FileChooser fc = new FileChooser();
@@ -179,7 +210,41 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    public FlowPane getBoard() {
+    FlowPane getBoard() {
         return this.board;
+    }
+
+    private void showException(Exception ex) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("An exception has occured: ");
+        alert.setContentText("Input file contains incorrect data" + ex);
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
     }
 }

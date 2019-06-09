@@ -30,7 +30,7 @@ public abstract class Automaton implements Observable {
     File inFile;
     InFileParser inparser;
     Outputter outputter;
-    private final int REFRESH_TIME = 400;
+    private int REFRESH_TIME = 400;
 
     /**
      *
@@ -41,12 +41,12 @@ public abstract class Automaton implements Observable {
         this.isPaused = pause;
     }
 
-    public void setFile(File inFile) {
+    public void setFile(File inFile) throws ArrayIndexOutOfBoundsException{
         this.inFile = inFile;
         this.parse();
     }
 
-    public void parse() {
+    public void parse() throws ArrayIndexOutOfBoundsException{
         try {
             this.grid = this.inparser.parse(this.inFile);
         } catch (FileNotFoundException ex) {
@@ -122,4 +122,19 @@ public abstract class Automaton implements Observable {
             }
         }, 0, REFRESH_TIME);
     }
+    
+   public void setSpeed(int speed) {
+       switch(speed)
+       {
+           case 0:
+               this.REFRESH_TIME = 800;
+                break;
+           case 1:
+               this.REFRESH_TIME = 400;
+               break;
+           case 2:
+               this.REFRESH_TIME = 200;
+               break;
+       }
+   }
 }
