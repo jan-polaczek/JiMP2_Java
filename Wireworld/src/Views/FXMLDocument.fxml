@@ -6,19 +6,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
         <Canvas height="650.0" layoutX="35.0" layoutY="34.0" width="850.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="423.0" AnchorPane.topAnchor="34.0" />
-        <Rectangle arcHeight="75.0" arcWidth="75.0" fill="#c9c9c9" height="534.0" layoutX="921.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="309.0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="921.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="50.0" />
-        <AnchorPane layoutX="921.0" layoutY="50.0" prefHeight="534.0" prefWidth="309.0">
+        <Rectangle arcHeight="75.0" arcWidth="75.0" fill="#c9c9c9" height="617.0" layoutX="921.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="309.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="921.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0" />
+        <AnchorPane layoutX="921.0" layoutY="52.0" prefHeight="617.0" prefWidth="309.0">
             <children>
-                <Button layoutX="80.0" layoutY="423.0" mnemonicParsing="false" onMouseClicked="#handleClose" prefHeight="60.0" prefWidth="175.0" text="EXIT" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="430.0" />
-                <Button fx:id="pausebtn" alignment="CENTER" layoutX="80.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#StartStop" prefHeight="60.0" prefWidth="175.0" text="START" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="30.0" />
-                <Button layoutX="80.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#FileChooser" prefHeight="60.0" prefWidth="175.0" text="LOAD FILE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="110.0" />
-                <Button layoutX="80.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#FileSaver" prefHeight="60.0" prefWidth="175.0" text="SAVE TO FILE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="190.0" />
-                <Button layoutX="80.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#RandomizeCells" prefHeight="60.0" prefWidth="175.0" text="RANDOMIZE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="270.0" />
-                <Button fx:id="gamemodebtn" layoutX="80.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#GameChanger" prefHeight="60.0" prefWidth="175.0" text="GAME OF LIFE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="350.0" />
+                <Button layoutX="93.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#handleClose" prefHeight="60.0" prefWidth="175.0" text="EXIT" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="520.0" />
+                <Button fx:id="pausebtn" layoutX="93.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#StartStop" prefHeight="60.0" prefWidth="175.0" text="START" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="40.0" />
+                <Button layoutX="93.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#FileChooser" prefHeight="60.0" prefWidth="175.0" text="LOAD FILE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0" />
+                <Button layoutX="93.0" layoutY="182.0" mnemonicParsing="false" onMouseClicked="#FileSaver" prefHeight="60.0" prefWidth="175.0" text="SAVE TO FILE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="200.0" />
+                <Button layoutX="93.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#RandomizeCells" prefHeight="60.0" prefWidth="175.0" text="RANDOMIZE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="280.0" />
+                <Button layoutX="93.0" layoutY="338.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="175.0" text="SET SIZE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="360.0" />
+                <Button fx:id="gamemodebtn" layoutX="93.0" layoutY="418.0" mnemonicParsing="false" onMouseClicked="#GameChanger" prefHeight="60.0" prefWidth="175.0" text="GAME OF LIFE" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="440.0" />
             </children>
         </AnchorPane>
     </children>
