@@ -5,7 +5,7 @@
  */
 package Models;
 /**
- *
+ * klasa abstrakcyjna reprezentująca siatkę komórek
  * @author 01133123
  */
 public abstract class Grid {
@@ -13,25 +13,55 @@ public abstract class Grid {
     static final int RAND_SIZE_MIN = 3;
     static final int RAND_SIZE_RANGE = 5;
     Cell[][] cellsList;
+
+    /**
+     * wymiary siatki
+     */
     protected int[] dimensions;
+
+    /**
+     * kolor(stan) komórek, które zliczane są w danym automacie;
+     * żywa(biała) komórka w grze w życie,
+     * przewodnik(żółta komórka) w Wireworld
+     */
     protected char countedColor;
 
+    /**
+     * konstruktor
+     */
     public Grid() {
         this.setDimensions(new int[2]);
     }
 
+    /**
+     *
+     * @return listę komórek
+     */
     public Cell[][] getCellsList() {
         return this.cellsList;
     }
 
+    /**
+     *
+     * @param cellsList
+     */
     public void setCellsList(Cell[][] cellsList) {
         this.cellsList = cellsList;
     }
 
+    /**
+     *
+     * @param dimensions
+     */
     public void setDimensions(int[] dimensions) {
         this.dimensions = dimensions;
     }
-
+    
+    /**
+     * zlicza liczbę sąsiadów o danym kolorze
+     * @param x
+     * @param y
+     */
     int checkNeighbors(int x, int y) {
         int counter = 0;
         if (x > 0 && y > 0) {
@@ -77,14 +107,31 @@ public abstract class Grid {
         return counter;
     }
 
+    /**
+     *
+     * @return
+     */
     public int[] getDimensions() {
         return this.dimensions;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return
+     */
     public Cell getCell(int x, int y) {
         return this.cellsList[x][y];
     }
     
+    /**
+     *
+     * @param x
+     * @param y
+     * @return zwraca komórkę o współrzędnych odwrotnych do podanych
+     * @throws ArrayIndexOutOfBoundsException
+     */
     public Cell getCellReversed(int x, int y) throws ArrayIndexOutOfBoundsException{
         return this.cellsList[y][x];
     }

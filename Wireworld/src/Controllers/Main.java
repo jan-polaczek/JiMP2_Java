@@ -1,7 +1,5 @@
 package Controllers;
 
-import Models.Observable;
-import Views.Observer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -11,11 +9,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ *
+ * @author 01133123
+ */
 public class Main extends Application {
-
-    private static final int REFRESH_TIME = 400;
-    Observer genView;
-    Observable automaton;
     FXMLDocumentController controller;
 
     @Override
@@ -37,6 +35,10 @@ public class Main extends Application {
 
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         launch(args);

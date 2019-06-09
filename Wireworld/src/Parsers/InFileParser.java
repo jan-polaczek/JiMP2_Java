@@ -15,5 +15,11 @@ import java.io.FileNotFoundException;
  */
 public interface InFileParser {
 
+    /**
+     *
+     * @param inFile
+     * @return
+     * @throws FileNotFoundException
+     */
     public abstract Grid parse(File inFile) throws FileNotFoundException;
 }

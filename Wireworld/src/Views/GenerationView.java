@@ -19,16 +19,27 @@ public class GenerationView implements Observer {
     Grid grid;
     FXMLDocumentController controller;
 
+    /**
+     *
+     * @param observable
+     * @param controller
+     */
     public GenerationView(Observable observable, FXMLDocumentController controller) {
         this.observable = observable;
         this.controller = controller;
     }
 
+    /**
+     *
+     */
     @Override
     public void register() {
         this.observable.registerObserver(this);
     }
 
+    /**
+     *
+     */
     @Override
     public void update() {
         this.grid = this.observable.getGrid();

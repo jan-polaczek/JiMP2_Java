@@ -13,6 +13,11 @@ import Models.Grid;
  */
 public class OutputterWW implements Outputter {
 
+    /**
+     *
+     * @param grid
+     * @return
+     */
     @Override
     public String saveFile(Grid grid) {
         String result = "";

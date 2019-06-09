@@ -13,6 +13,9 @@ import Parsers.OutputterGoL;
  */
 public class GoL extends Automaton {
 
+    /**
+     * klasa reprezentująca automat komórkowy - grę w życie
+     */
     public GoL() {
         super();
         this.grid = new GridGoL();

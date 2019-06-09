@@ -18,6 +18,13 @@ import java.util.Scanner;
  */
 public class InFileParserWW implements InFileParser {
 
+    /**
+     *
+     * @param inFile
+     * @return
+     * @throws FileNotFoundException
+     * @throws ArrayIndexOutOfBoundsException
+     */
     @Override
     public Grid parse(File inFile) throws FileNotFoundException, ArrayIndexOutOfBoundsException {
         Scanner sc = new Scanner(inFile);

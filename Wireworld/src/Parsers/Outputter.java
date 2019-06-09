@@ -14,5 +14,10 @@ import java.io.File;
  */
 public interface Outputter {
 
+    /**
+     *
+     * @param grid
+     * @return
+     */
     public abstract String saveFile(Grid grid);
 }

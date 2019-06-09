@@ -11,9 +11,20 @@ package Models;
  */
 public interface Observable {
 
+    /**
+     *
+     * @param observer
+     */
     public abstract void registerObserver(Views.Observer observer);
 
+    /**
+     *
+     */
     public abstract void notifyObservers();
 
+    /**
+     *
+     * @return
+     */
     public abstract Grid getGrid();
 }

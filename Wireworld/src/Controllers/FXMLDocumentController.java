@@ -28,11 +28,15 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
+/**
+ *
+ * @author 01133123
+ */
 public class FXMLDocumentController implements Initializable {
 
-    public String saveFilePath;
-    public boolean gamemode = false;
-    public boolean pause = true;
+    private String saveFilePath;
+    private boolean gamemode = false;
+    private boolean pause = true;
     private final int CANVAS_WIDTH = 800;
     private final int CANVAS_HEIGHT = 700;
     private final int MARGIN_LEFT = 40;
@@ -133,12 +137,12 @@ public class FXMLDocumentController implements Initializable {
     }
     @FXML
     private void GameChanger(MouseEvent event) { //działanie przycisku zmieniającego grę
-        if (gamemode == false) {
-            gamemode = true;               //tu powinna jeszcze zmieniać się nazwa przycisku
-            gamemodebtn.setText("WIREWORLD");
+        if (this.gamemode == false) {
+            this.gamemode = true;               //tu powinna jeszcze zmieniać się nazwa przycisku
+            this.gamemodebtn.setText("WIREWORLD");
         } else {
-            gamemode = false;
-            gamemodebtn.setText("GAME OF LIFE");
+            this.gamemode = false;
+            this.gamemodebtn.setText("GAME OF LIFE");
         }
     }
 
@@ -146,10 +150,10 @@ public class FXMLDocumentController implements Initializable {
     private void StartStop(MouseEvent event) {  //działanie przycisku START
         if (this.pause == false) {
             this.pause = true;
-            pausebtn.setText("START");
+            this.pausebtn.setText("START");
         } else {
             this.pause = false;
-            pausebtn.setText("PAUSE");
+            this.pausebtn.setText("PAUSE");
         }
         this.automaton.setPause(this.pause);
     }
@@ -170,6 +174,10 @@ public class FXMLDocumentController implements Initializable {
         this.automaton.play();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isPaused() {
         return this.pause;
     }
@@ -179,23 +187,26 @@ public class FXMLDocumentController implements Initializable {
         // TODO
     }
 
+    /**
+     *
+     */
     public void createBoard() {
         if (this.pause == false) {
             pausebtn.setText("PAUSE");
         } else {
             pausebtn.setText("START");
         }
-        board.getChildren().clear();
-        board.setHgap(CELL_GAP);
-        board.setVgap(CELL_GAP);
-        board.setPadding(new Insets(MARGIN_TOP, 0, 0, MARGIN_LEFT));
-        board.setMaxWidth(CANVAS_WIDTH + MARGIN_LEFT);
-        board.setPrefWidth(CANVAS_WIDTH + MARGIN_LEFT);
-        board.setMinWidth(CANVAS_WIDTH + MARGIN_LEFT);
-        board.setPrefHeight(CANVAS_HEIGHT);
-        board.setMinHeight(CANVAS_HEIGHT);
-        board.setMaxHeight(CANVAS_HEIGHT);
-        board.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        this.board.getChildren().clear();
+        this.board.setHgap(CELL_GAP);
+        this.board.setVgap(CELL_GAP);
+        this.board.setPadding(new Insets(MARGIN_TOP, 0, 0, MARGIN_LEFT));
+        this.board.setMaxWidth(CANVAS_WIDTH + MARGIN_LEFT);
+        this.board.setPrefWidth(CANVAS_WIDTH + MARGIN_LEFT);
+        this.board.setMinWidth(CANVAS_WIDTH + MARGIN_LEFT);
+        this.board.setPrefHeight(CANVAS_HEIGHT);
+        this.board.setMinHeight(CANVAS_HEIGHT);
+        this.board.setMaxHeight(CANVAS_HEIGHT);
+        this.board.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 changeCell(mouseEvent);
@@ -229,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
                         r.setFill(Paint.valueOf("FF0000"));
                         break;
                 }
-                board.getChildren().add(r);
+                this.board.getChildren().add(r);
             }
         }
 

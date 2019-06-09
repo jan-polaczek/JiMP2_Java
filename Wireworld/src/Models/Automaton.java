@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 
 /**
- *
+ * klasa abstrakcyjna reprezentująca automat komórkowy
  * @author 01133123
  */
 public abstract class Automaton implements Observable {
@@ -33,19 +33,27 @@ public abstract class Automaton implements Observable {
     private int REFRESH_TIME = 400;
 
     /**
-     *
-     * @param inFile plik wejściowy z planszą automatu
+     * zmienia stan automatu(zapauzowany/niezapauzowany)
+     * @param pause 0 - niezapuazowany; 1 - zapauzowany
      */
-
     public void setPause(boolean pause) {
         this.isPaused = pause;
     }
 
+    /**
+     *
+     * @param inFile plik wejściowy
+     * @throws ArrayIndexOutOfBoundsException
+     */
     public void setFile(File inFile) throws ArrayIndexOutOfBoundsException{
         this.inFile = inFile;
         this.parse();
     }
 
+    /**
+     *
+     * @throws ArrayIndexOutOfBoundsException
+     */
     public void parse() throws ArrayIndexOutOfBoundsException{
         try {
             this.grid = this.inparser.parse(this.inFile);
@@ -60,7 +68,7 @@ public abstract class Automaton implements Observable {
      */
     @Override
     public void registerObserver(Views.Observer observer) {
-        observers.add(observer);
+        this.observers.add(observer);
     }
 
     /**
@@ -68,7 +76,7 @@ public abstract class Automaton implements Observable {
      */
     @Override
     public void notifyObservers() {
-        observers.forEach((observer) -> {
+        this.observers.forEach((observer) -> {
             observer.update();
         });
     }
@@ -91,7 +99,8 @@ public abstract class Automaton implements Observable {
     }
 
     /**
-     * zapisuje obecny stan automatu do pliku tekstowego
+     * wywołuje metodę saveFile outputtera
+     * @return ciąg znaków zapisywanych do pliku
      */
     public String saveFile() {
         return this.outputter.saveFile(this.grid);
@@ -105,10 +114,16 @@ public abstract class Automaton implements Observable {
         this.notifyObservers();
     }
 
+    /**
+     * wywołuje funkcję randomize obiektu klasy grid
+     */
     public void randomize() {
         this.grid.randomize();
     }
 
+    /**
+     * wykonuje przejścia między generacjami co określoną liczbę milisekund
+     */
     public void play() {
         int period = REFRESH_TIME;
         Timer timer = new Timer();
@@ -129,7 +144,11 @@ public abstract class Automaton implements Observable {
         }, 0, period);
     }
     
-   public void setSpeed(int speed) {
+    /**
+     * zmienia szybkość wykonywania nowych generacji
+     * @param speed liczba milisekund między wykonaniem nowej generacji
+     */
+    public void setSpeed(int speed) {
        switch(speed)
        {
            case 0:

@@ -17,6 +17,9 @@ public class GridGoL extends Grid {
     private static final int ALIVE_MAX = 3;
     private static final int COL_NUM = 2;
 
+    /**
+     *
+     */
     public GridGoL() {
         super();
         this.countedColor = 'w';

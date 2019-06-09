@@ -13,6 +13,9 @@ import Parsers.OutputterWW;
  */
 public class WireWorld extends Automaton {
 
+    /**
+     *
+     */
     public WireWorld() {
         super();
         this.grid = new GridWW();

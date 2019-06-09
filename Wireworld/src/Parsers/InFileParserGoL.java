@@ -18,6 +18,12 @@ import java.util.Scanner;
  */
 public class InFileParserGoL implements InFileParser {
 
+    /**
+     *
+     * @param inFile
+     * @return
+     * @throws FileNotFoundException
+     */
     @Override
     public Grid parse(File inFile) throws FileNotFoundException {
         Scanner sc = new Scanner(inFile);

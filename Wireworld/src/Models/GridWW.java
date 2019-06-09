@@ -17,6 +17,9 @@ public class GridWW extends Grid {
     private static final int ELECTRON_MAX = 2;
     private static final int COL_NUM = 4;
 
+    /**
+     *
+     */
     public GridWW() {
         super();
         this.countedColor = 'l';

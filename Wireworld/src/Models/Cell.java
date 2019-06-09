@@ -13,27 +13,38 @@ public class Cell {
 
     private char color;
 
-    /*
-    Kolory oznaczają stany komórki:
-    b - czarny martwa komórka w GoL
-    w - biały żywa komórka w GoL
-    y - żółty przewodnik w Ww
-    l - niebieski głowa elektronu w Ww
-    r - czerwony głowa elektronu w Ww
+    /**
+     *
+     * @param color oznacza stan komórki
+     * b - czarny martwa komórka w GoL / pusta komórka w Ww
+     * w - biały żywa komórka w GoL
+     * y - żółty przewodnik w Ww
+     * l - niebieski głowa elektronu w Ww
+     * r - czerwony głowa elektronu w Ww
      */
-
     public Cell(char color) {
         this.color = color;
     }
 
+    /**
+     *
+     * @return kolor danej komórki
+     */
     public char getColor() {
         return this.color;
     }
 
+    /**
+     *
+     * @param c kolor, na który ma być zmieniona komórka
+     */
     public void setColor(char c) {
         this.color = c;
     }
 
+    /**
+     * zmienia stan(kolor) komórki, zależnie od jej poprzedniego stanu
+     */
     public void changeState() {
         switch (this.color) {
             case 'w':
