@@ -44,19 +44,19 @@ public class InFileParserWW implements InFileParser {
                 String z = String.valueOf(line[3]);
                 if("Normal".equals(z))
                 {
-                    grid.getCell(x, y).setColor('y');
-                    grid.getCell(x+1, y).setColor('y');
-                    grid.getCell(x, y-1).setColor('y');
-                    grid.getCell(x, y-2).setColor('y');
-                    grid.getCell(x+1, y-2).setColor('y');
+                grid.getCell(x, y).setColor('y');
+                grid.getCell(x+1, y).setColor('y');
+                grid.getCell(x, y-1).setColor('y');
+                grid.getCell(x, y-2).setColor('y');
+                grid.getCell(x+1, y-2).setColor('y');
                 }
                 else if("Reversed".equals(z))
                 {
-                    grid.getCell(x, y).setColor('y');
-                    grid.getCell(x+1, y).setColor('y');
-                    grid.getCell(x+1, y-1).setColor('y');
-                    grid.getCell(x, y-2).setColor('y');
-                    grid.getCell(x+1, y-2).setColor('y'); 
+                grid.getCell(x, y).setColor('y');
+                grid.getCell(x+1, y).setColor('y');
+                grid.getCell(x+1, y-1).setColor('y');
+                grid.getCell(x, y-2).setColor('y');
+                grid.getCell(x+1, y-2).setColor('y'); 
                 }
             }
             else if("Conductor".equals(type))
@@ -101,7 +101,7 @@ public class InFileParserWW implements InFileParser {
                 int y = Integer.valueOf(line[2]);
                 String z = String.valueOf(line[3]);
                 if("Normal".equals(z))
-                {
+                    {
                     grid.getCell(x, y).setColor('y');
                     grid.getCell(x, y-1).setColor('y');
                     grid.getCell(x, y-2).setColor('y');
@@ -122,7 +122,7 @@ public class InFileParserWW implements InFileParser {
                     grid.getCell(x+4, y-2).setColor('y');
                     grid.getCell(x+4, y-4).setColor('y');
                     grid.getCell(x+5, y-3).setColor('y');
-                }
+                    }
                 else if("Reversed".equals(z))
                 {
                     grid.getCell(x, y-3).setColor('y');
