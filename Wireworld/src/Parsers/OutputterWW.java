@@ -17,5 +17,5 @@ public class OutputterWW implements Outputter {
     public void saveFile(Grid grid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

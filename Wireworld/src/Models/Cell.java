@@ -10,8 +10,9 @@ package Models;
  * @author 01133123
  */
 public class Cell {
-    
+
     private char color;
+
     /*
     Kolory oznaczają stany komórki:
     b - czarny martwa komórka w GoL
@@ -19,22 +20,21 @@ public class Cell {
     y - żółty przewodnik w Ww
     l - niebieski głowa elektronu w Ww
     r - czerwony głowa elektronu w Ww
-    */
-    
-    public Cell(char color)
-    {
+     */
+
+    public Cell(char color) {
         this.color = color;
     }
-    
-    public char getColor()
-    {
+
+    public char getColor() {
         return this.color;
     }
-    public void setColor(char c)
-    {
+
+    public void setColor(char c) {
         this.color = c;
     }
-    public void changeState(){
+
+    public void changeState() {
         switch (this.color) {
             case 'w':
                 this.color = 'b';

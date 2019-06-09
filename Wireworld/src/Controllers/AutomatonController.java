@@ -10,5 +10,5 @@ package Controllers;
  * @author 01133123
  */
 public abstract class AutomatonController {
-    
+
 }
